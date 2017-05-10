@@ -48,7 +48,7 @@ http:
   # Uncomment this to add a password (recommended!)
   api_password: !secret http_password
   # Uncomment this if you are using SSL or running in Docker etc
-  base_url: ha.jolis.nu:8123
+  base_url: !secret web_base_url
 
 # Checks for available updates
 updater:
@@ -69,8 +69,8 @@ logbook:
 sun:
 
 ring:
-  username: thelink73@gmail.com
-  password: MussePigg10
+  username: !secret ring_user
+  password: !secret ring_password
 
 
 # sensors
@@ -89,23 +89,23 @@ tts:
   language: 'sv'
 
 volvooncall:
-  username: thelink73@gmail.com
-  password: MussePigg10
+  username: !secret voc_username
+  password: !secret voc_password
   name:
     nhg064: 'Batmobile'
 
 #TelldusLive Account thelink73
 tellduslive:
-  public_key: FEHUVEW84RAFR5SP22RABURUPHAFRUNU
-  private_key: ZUXEVEGA9USTAZEWRETHAQUBUR69U6EF
-  token: 107fb46a587f646023ef28cb7590fd750590a2834
-  token_secret: 6ae5df0c49eefded546874c923d8af7f
+  public_key: !secret tellus_public_key
+  private_key: !secret tellus_private_key
+  token: !secret tellus_token
+  token_secret: !secret tellus_token_secret
 
 #test med spotify
 media_player:
   - platform: spotify
-    client_id: fbf1f41728da4fd7aa67a8e88832a3d1
-    client_secret: 2952aeea724644a197bbf0cef8747684
+    client_id: !secret spotify_client_id
+    client_secret: !secret spotify_client_secret
   - platform: plex
 
 group: !include groups.yaml
