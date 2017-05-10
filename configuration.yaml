@@ -46,7 +46,7 @@ config:
 
 http:
   # Uncomment this to add a password (recommended!)
-  api_password: Linkman10
+  api_password: !secret http_password
   # Uncomment this if you are using SSL or running in Docker etc
   base_url: ha.jolis.nu:8123
 
