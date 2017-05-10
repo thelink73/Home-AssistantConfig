@@ -13,7 +13,7 @@ homeassistant:
   time_zone: Europe/Stockholm
   # New Names
   customize:
-    # Add an entry for each entity that you want to overwrite.
+    # Add an entry for each entity that you want to overwrite info for.
     switch.pluggonoff3:
       friendly_name: Kaffekokare
       icon: mdi:coffee
