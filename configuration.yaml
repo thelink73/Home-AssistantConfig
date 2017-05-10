@@ -1,0 +1,149 @@
+homeassistant:
+  # Name of the location where Home Assistant is running
+  name: JoliHome
+  # Location required to calculate the time the sun rises and sets
+  latitude: 56.0945236
+  longitude: 12.9165755
+  # ,
+  # Impacts weather/sunrise data (altitude above sea level in meters)
+  elevation: 3
+  # metric for Metric, imperial for Imperial
+  unit_system: metric
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: Europe/Stockholm
+  # New Names
+  customize:
+    # Add an entry for each entity that you want to overwrite.
+    switch.pluggonoff3:
+      friendly_name: Kaffekokare
+      icon: mdi:coffee
+      assumed_state: false
+    switch.nexa_pluggonoff1:
+      friendly_name: Fönster kök
+      icon: mdi:ceiling-light
+      assumed_state: false
+      # Add an entry to hide items
+        # Nexa Remote
+    switch.nexaremote1button1:
+      hidden: true
+    switch.nexaremote1button2:
+      hidden: true
+    switch.nexaremote1button3:
+      hidden: true   
+        # Telldus Remote      
+    switch.telldus_remote1button1:
+      hidden: true
+    switch.telldus_remote1button2:
+      hidden: true
+    switch.telldus_remote1button3:
+      hidden: true
+      
+# Enables the frontend
+frontend:
+
+# Enables configuration UI
+config:
+
+http:
+  # Uncomment this to add a password (recommended!)
+  api_password: Linkman10
+  # Uncomment this if you are using SSL or running in Docker etc
+  # base_url: example.duckdns.org:8123
+
+# Checks for available updates
+updater:
+
+# Discover some devices automatically
+discovery:
+
+# Allows you to issue voice commands from the frontend in enabled browsers
+conversation:
+
+# Enables support for tracking state changes over time.
+history:
+
+# View all events in a logbook
+logbook:
+
+# Track the sun
+sun:
+
+ring:
+  username: thelink73@gmail.com
+  password: MussePigg10
+
+
+# sensors
+sensor:
+  - platform: yr
+  - platform: ring
+    monitored_conditions:
+      - battery
+      - last_activity
+      - last_ding
+      - last_motion
+      - volume
+# Text to speech
+tts:
+  platform: google
+  language: 'sv'
+
+volvooncall:
+  username: thelink73@gmail.com
+  password: MussePigg10
+  name:
+    nhg064: 'Batmobile'
+
+#TelldusLive Account thelink73
+tellduslive:
+  public_key: FEHUVEW84RAFR5SP22RABURUPHAFRUNU
+  private_key: ZUXEVEGA9USTAZEWRETHAQUBUR69U6EF
+  token: 107fb46a587f646023ef28cb7590fd750590a2834
+  token_secret: 6ae5df0c49eefded546874c923d8af7f
+
+#test med spotify
+media_player:
+  - platform: spotify
+    client_id: fbf1f41728da4fd7aa67a8e88832a3d1
+    client_secret: 2952aeea724644a197bbf0cef8747684
+  - platform: plex
+
+group: !include groups.yaml
+device_tracker: !include device_tracker.yaml
+
+# TEST
+
+automation:
+- alias: "Coffee: Automatically turn off"
+  trigger:
+    - platform: state
+      entity_id: switch.pluggonoff3
+      to: 'on'
+  action:
+    - service: script.turn_on
+      entity_id: script.coffee_timer
+- alias: "Coffee: reset timer"
+  trigger:
+    - platform: state
+      entity_id: switch.pluggonoff3
+      to: 'off'
+  action:
+    - service: script.turn_off
+      entity_id: script.coffee_timer
+      
+script:
+  coffee_timer:
+    alias: "Coffee Timer"
+    sequence:
+      - delay: '00:{{ states.input_slider.coffee_run_time.state | int }}:00'
+      - service: homeassistant.turn_off
+        data:
+          entity_id: switch.pluggonoff3
+
+input_slider:
+  coffee_run_time:
+    name: Coffee Run Time
+    initial: 45
+    min: 1
+    max: 60
+    step: 1

@@ -1,0 +1,114 @@
+### VIEWS
+ rooms_view:
+  name: Rum
+  view: yes
+  entities:
+   - group.tvrum
+   - group.sovrum
+   - group.tvattstuga
+   - group.generallightning
+   - group.kitchen
+
+ mediaspelare_view:
+  name: Media Spelare
+  view: yes
+  entities:
+   - group.mediaspelare_group
+
+ sensors_view:
+  name: Sensors
+  view: yes
+  entities:
+   - group.environment_group
+   - group.ring_doorbell_group
+
+ voc_view:
+  name: Volvo
+  view: yes
+  entities:
+   - group.voc_group
+
+ ### GROUPS
+ tvrum:
+  name: TV rummet
+  entities:
+   - light.gronlampa_vid_tv
+   - light.pelare_lampa1
+   - light.pelare_lampa_2
+   - light.pelare_lampa_3
+   - light.lampa_2arms_fonster_uterum
+   - light.lampa_2arms_fonster_uterum_2
+   - light.lampa_fonster_matbord
+
+ sovrum:
+  name: Sovrum
+  entities:
+   - media_player.sovrum
+
+ tvattstuga:
+  name: Tvättstuga
+  entities:
+   - light.lampa_tvattstuga
+
+ kitchen:
+  name: Kök
+  entities:
+   - switch.nexa_pluggonoff1
+   - switch.pluggonoff3
+  
+   
+ generallightning:
+  name: Allmän belysning
+  entities:
+   - light.lampa_barskap
+
+ mediaspelare_group:
+  name: Media spelare
+  entities:
+   - media_player.kd65xd9305
+   - media_player.spotify
+   - media_player.vardagsrum
+   - media_player.vardagsrum_2
+   - media_player.sovrum
+   - media_player.plex_web_safari
+
+ environment_group:
+  - sensor.yr_symbol
+  - sun.sun
+
+ ring_doorbell_group:
+  - sensor.ring_front_door_battery
+  - sensor.ring_front_door_last_activity
+  - sensor.ring_front_door_last_ding
+  - sensor.ring_front_door_last_motion
+  - sensor.ring_front_door_volume
+
+ telldus_live_group:
+  - switch.pluggonoff1
+  - switch.pluggonoff2
+  - switch.pluggonoff3
+  - switch.telldus_remote1button1
+  - switch.telldus_remote1button2
+  - switch.telldus_remote1button3
+  - switch.nexa_pluggonoff1
+  - switch.nexa_pluggonoff2
+  - switch.nexaremote1button1
+  - switch.nexaremote1button2
+  - switch.nexaremote1button3
+
+ voc_group:
+  - binary_sensor.batmobile_brake_fluid
+  - binary_sensor.batmobile_bulbs
+  - binary_sensor.batmobile_doors
+  - binary_sensor.batmobile_service
+  - binary_sensor.batmobile_washer_fluid
+  - binary_sensor.batmobile_windows
+  - device_tracker.volvo_nhg064
+  - sensor.batmobile_fuel
+  - sensor.batmobile_fuel_2
+  - sensor.batmobile_odometer
+  - sensor.batmobile_range
+  - switch.batmobile_heater
+  - lock.batmobile_lock
+
+  

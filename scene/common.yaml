@@ -1,0 +1,20 @@
+# Example configuration.yaml
+
+  - name: TvRoomOn
+    entities:
+      light.gronlampa_vid_tv :on     
+      light.pelare_lampa1 :on
+      light.pelare_lampa2 :on
+      light.pelare_lampa3 :on
+      light.lampa_2arms_fonster_uterum :on
+      light.lampa_2arms_fonster_uterum_2 :on
+      light.lampa_fonster_matbord :on
+  - name: TvRoomOff
+    entities:
+      light.gronlampa_vid_tv :off    
+      light.pelare_lampa1 :off
+      light.pelare_lampa2 :off
+      light.pelare_lampa3 :off
+      light.lampa_2arms_fonster_uterum :off
+      light.lampa_2arms_fonster_uterum_2 :off
+      light.lampa_fonster_matbord :off

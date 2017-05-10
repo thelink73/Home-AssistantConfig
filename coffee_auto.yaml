@@ -1,0 +1,16 @@
+- alias: "Coffee: Automatically turn off"
+  trigger:
+    - platform: state
+      entity_id: switch.pluggonoff3
+      to: 'on'
+  action:
+    - service: script.turn_on
+      entity_id: script.coffee_timer
+- alias: "Coffee: reset timer"
+  trigger:
+    - platform: state
+      entity_id: switch.pluggonoff3
+      to: 'off'
+  action:
+    - service: script.turn_off
+      entity_id: script.coffee_timer
