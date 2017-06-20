@@ -113,7 +113,10 @@ device_tracker: !include device_tracker.yaml
 
 # TEST
 
-automation:
+automation: !include automation.yaml
+
+
+automation old:
 - alias: "Coffee: Automatically turn off"
   trigger:
     - platform: state
