@@ -104,6 +104,8 @@
   - binary_sensor.batmobile_washer_fluid
   - binary_sensor.batmobile_windows
   - device_tracker.volvo_nhg064
+  - sensor.batmobile_fuel_amount
+  - sensor.batmobile_fuel_level
   - sensor.batmobile_fuel
   - sensor.batmobile_fuel_2
   - sensor.batmobile_odometer
